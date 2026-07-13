@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', 'Poppins', sans-serif;
+  --color-primary: #0c1222;
+  --color-secondary: #111827;
+  --color-accent: #3b82f6;
+  --color-highlight: #06b6d4;
+}
+
+[data-theme="light"] {
+  --color-primary: #f8fafc;
+  --color-secondary: #f1f5f9;
+  --color-accent: #2563eb;
+  --color-highlight: #0891b2;
+  --color-white: #0f172a;
+  --color-gray-300: #475569;
+  --color-gray-400: #64748b;
+  --color-gray-500: #94a3b8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Poppins', sans-serif;
+  overflow-x: hidden;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-primary); }
+::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-highlight); }
+
+::selection { background: var(--color-accent); color: var(--color-white); }
+
+.glass {
+  background: color-mix(in oklab, var(--color-white) 5%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in oklab, var(--color-white) 10%, transparent);
+}
+
+.glass-dark {
+  background: color-mix(in oklab, var(--color-primary) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in oklab, var(--color-white) 10%, transparent);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-highlight));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow {
+  box-shadow: 0 0 20px color-mix(in oklab, var(--color-accent) 30%, transparent), 0 0 40px color-mix(in oklab, var(--color-accent) 10%, transparent);
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.section-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  color: var(--color-white);
+}
+
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-highlight));
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px color-mix(in oklab, var(--color-accent) 15%, transparent);
+}
+
+.typewriter-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
