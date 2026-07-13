@@ -21,7 +21,7 @@ export default function Education() {
                     <h3 className="text-xl font-bold text-white">{edu.degree}</h3>
                     <p className="text-accent font-medium">{edu.institution}</p>
                   </div>
-                  <span className="px-3 py-1 bg-highlight/10 text-highlight text-sm rounded-full whitespace-nowrap">
+                  <span className="px-3 py-1 bg-highlight/10 text-highlight text-xs md:text-sm rounded-full whitespace-nowrap">
                     {edu.period}
                   </span>
                 </div>

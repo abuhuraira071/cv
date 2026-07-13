@@ -35,7 +35,7 @@ export default function SkillBar({ name, level, icon, index = 0 }) {
           animate={isVisible ? { width: `${level}%` } : { width: 0 }}
           transition={{ duration: 1.5, delay: index * 0.2, ease: 'easeOut' }}
           className="h-full rounded-full bg-gradient-to-r from-accent to-highlight"
-          style={{ boxShadow: '0 0 10px rgba(37, 99, 235, 0.5)' }}
+          style={{ boxShadow: '0 0 10px color-mix(in oklab, var(--color-accent) 50%, transparent)' }}
         />
       </div>
     </div>

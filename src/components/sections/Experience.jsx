@@ -35,7 +35,7 @@ export default function Experience() {
                       <p className="text-accent font-medium">{exp.company}</p>
                     </div>
                   </div>
-                  <span className="px-3 py-1 bg-highlight/10 text-highlight text-sm rounded-full whitespace-nowrap">
+                  <span className="px-3 py-1 bg-highlight/10 text-highlight text-xs md:text-sm rounded-full whitespace-nowrap">
                     {exp.period}
                   </span>
                 </div>

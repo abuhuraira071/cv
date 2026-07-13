@@ -79,7 +79,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden overflow-hidden"
             >
-              <div className="flex flex-col py-4 space-y-2">
+              <div className="flex flex-col py-4 space-y-1">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
@@ -90,21 +90,22 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
                     spy={true}
                     activeClass="text-accent"
                     onClick={() => setIsOpen(false)}
-                    className="px-4 py-2 text-gray-300 hover:text-accent transition-colors text-sm font-medium cursor-pointer"
+                    className="px-4 py-3 text-gray-300 hover:text-accent hover:bg-white/5 transition-colors text-sm font-medium cursor-pointer rounded-lg"
                   >
                     {link.name}
                   </Link>
                 ))}
+                <hr className="border-white/10 mx-4 my-2" />
                 <button
                   onClick={toggleDarkMode}
-                  className="px-4 py-2 text-gray-300 hover:text-accent transition-colors text-sm font-medium flex items-center gap-2"
+                  className="mx-4 px-4 py-3 text-gray-300 hover:text-accent hover:bg-white/5 transition-colors text-sm font-medium flex items-center gap-2 rounded-lg"
                 >
                   {darkMode ? <FaSun /> : <FaMoon />} {darkMode ? 'Light' : 'Dark'} Mode
                 </button>
                 <a
                   href={personalInfo.resumeUrl}
                   download
-                  className="mx-4 px-4 py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent/80 transition-colors flex items-center gap-2 justify-center"
+                  className="mx-4 mt-2 px-4 py-3 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent/80 transition-colors flex items-center gap-2 justify-center"
                 >
                   <FaDownload /> Download CV
                 </a>

@@ -50,7 +50,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Let's Talk</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">Let's Talk</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <input
@@ -164,7 +164,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-6 py-3 bg-accent text-white rounded-lg shadow-lg"
+            className="fixed bottom-6 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:w-auto z-50 px-6 py-3 bg-accent text-white rounded-lg shadow-lg text-center"
           >
             {toast.message}
           </motion.div>

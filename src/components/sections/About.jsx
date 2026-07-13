@@ -54,11 +54,11 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative w-72 h-72 mx-auto">
+            <div className="relative w-48 h-48 sm:w-72 sm:h-72 mx-auto">
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent to-highlight animate-spin-slow" />
               <div className="absolute inset-1 rounded-2xl bg-primary flex items-center justify-center">
                 <div className="w-full h-full rounded-2xl bg-gradient-to-br from-accent/20 to-highlight/20 flex items-center justify-center">
-                  <span className="text-8xl font-bold gradient-text">{personalInfo.firstName[0]}{personalInfo.lastName[0]}</span>
+                  <span className="text-5xl sm:text-8xl font-bold gradient-text">{personalInfo.firstName[0]}{personalInfo.lastName[0]}</span>
                 </div>
               </div>
             </div>
@@ -69,39 +69,39 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-white mb-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
               Who I <span className="gradient-text">Am</span>
             </h3>
             <p className="text-gray-400 leading-relaxed mb-6">
               {personalInfo.profileSummary}
             </p>
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6">
               <div className="flex items-center gap-3 text-gray-300">
-                <FaBirthdayCake className="text-accent" />
-                <div>
-                  <span className="text-sm text-gray-500">Age</span>
-                  <p className="font-medium">{personalInfo.age} Years</p>
+                <FaBirthdayCake className="text-accent flex-shrink-0" />
+                <div className="min-w-0">
+                  <span className="text-xs sm:text-sm text-gray-500">Age</span>
+                  <p className="font-medium text-sm sm:text-base truncate">{personalInfo.age} Years</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
-                <FaMapMarkerAlt className="text-accent" />
-                <div>
-                  <span className="text-sm text-gray-500">Location</span>
-                  <p className="font-medium">{personalInfo.location}</p>
+                <FaMapMarkerAlt className="text-accent flex-shrink-0" />
+                <div className="min-w-0">
+                  <span className="text-xs sm:text-sm text-gray-500">Location</span>
+                  <p className="font-medium text-sm sm:text-base truncate">{personalInfo.location}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
-                <FaEnvelope className="text-accent" />
-                <div>
-                  <span className="text-sm text-gray-500">Email</span>
-                  <p className="font-medium">{personalInfo.email}</p>
+                <FaEnvelope className="text-accent flex-shrink-0" />
+                <div className="min-w-0">
+                  <span className="text-xs sm:text-sm text-gray-500">Email</span>
+                  <p className="font-medium text-sm sm:text-base truncate">{personalInfo.email}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
-                <FaPhone className="text-accent" />
-                <div>
-                  <span className="text-sm text-gray-500">Phone</span>
-                  <p className="font-medium">{personalInfo.phone}</p>
+                <FaPhone className="text-accent flex-shrink-0" />
+                <div className="min-w-0">
+                  <span className="text-xs sm:text-sm text-gray-500">Phone</span>
+                  <p className="font-medium text-sm sm:text-base truncate">{personalInfo.phone}</p>
                 </div>
               </div>
             </div>

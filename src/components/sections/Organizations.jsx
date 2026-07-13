@@ -25,7 +25,7 @@ export default function Organizations() {
               </div>
               <h3 className="text-lg font-bold text-white mb-1">{org.name}</h3>
               <p className="text-accent font-medium text-sm mb-2">{org.role}</p>
-              <span className="inline-block px-3 py-1 bg-highlight/10 text-highlight text-xs rounded-full mb-3">
+              <span className="inline-block px-3 py-1 bg-highlight/10 text-highlight text-xs rounded-full mb-3 whitespace-nowrap">
                 {org.period}
               </span>
               <p className="text-gray-400 text-sm mb-3">{org.description}</p>

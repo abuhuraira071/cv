@@ -26,8 +26,8 @@ class Particle {
     if (this.y < 0 || this.y > this.canvas.height) this.speedY *= -1;
   }
 
-  draw(ctx) {
-    ctx.fillStyle = `rgba(37, 99, 235, ${this.opacity})`;
+  draw(ctx, color) {
+    ctx.fillStyle = color;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
@@ -44,6 +44,11 @@ function ParticleBackground() {
         const particles = [];
         const particleCount = 80;
 
+        const getAccentColor = () => {
+          const style = getComputedStyle(document.documentElement);
+          return style.getPropertyValue('--color-accent').trim();
+        };
+
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
 
@@ -53,7 +58,14 @@ function ParticleBackground() {
           particles.push(p);
         }
 
-        function connectParticles() {
+        function hexToRgba(hex, opacity) {
+          const r = parseInt(hex.slice(1, 3), 16);
+          const g = parseInt(hex.slice(3, 5), 16);
+          const b = parseInt(hex.slice(5, 7), 16);
+          return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+        }
+
+        function connectParticles(accentColor) {
           for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
               const dx = particles[i].x - particles[j].x;
@@ -61,7 +73,7 @@ function ParticleBackground() {
               const distance = Math.sqrt(dx * dx + dy * dy);
               if (distance < 150) {
                 ctx.beginPath();
-                ctx.strokeStyle = `rgba(37, 99, 235, ${0.1 * (1 - distance / 150)})`;
+                ctx.strokeStyle = hexToRgba(accentColor, 0.1 * (1 - distance / 150));
                 ctx.lineWidth = 0.5;
                 ctx.moveTo(particles[i].x, particles[i].y);
                 ctx.lineTo(particles[j].x, particles[j].y);
@@ -72,12 +84,13 @@ function ParticleBackground() {
         }
 
         function animate() {
+          const accentColor = getAccentColor();
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           particles.forEach((p) => {
             p.update();
-            p.draw(ctx);
+            p.draw(ctx, hexToRgba(accentColor, p.opacity));
           });
-          connectParticles();
+          connectParticles(accentColor);
           animationId = requestAnimationFrame(animate);
         }
 
@@ -150,11 +163,11 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          <div className="relative w-40 h-40 mx-auto mb-8">
+          <div className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 sm:mb-8">
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent to-highlight animate-spin-slow" />
             <div className="absolute inset-1 rounded-full bg-primary flex items-center justify-center">
-              <div className="w-36 h-36 rounded-full bg-gradient-to-br from-accent/30 to-highlight/30 flex items-center justify-center">
-                <span className="text-5xl font-bold text-white">{personalInfo.firstName[0]}</span>
+              <div className="w-[7.5rem] h-[7.5rem] sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-accent/30 to-highlight/30 flex items-center justify-center">
+                <span className="text-3xl sm:text-5xl font-bold text-white">{personalInfo.firstName[0]}</span>
               </div>
             </div>
           </div>
@@ -164,7 +177,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-highlight font-mono text-lg mb-4"
+          className="text-highlight font-mono text-base sm:text-lg mb-4"
         >
           Hello, I'm
         </motion.p>
@@ -173,7 +186,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="text-5xl md:text-7xl font-bold text-white mb-4"
+          className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4"
         >
           <span className="gradient-text">{personalInfo.firstName}</span>{' '}
           <span className="text-white">{personalInfo.lastName}</span>
@@ -183,7 +196,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="text-xl md:text-2xl text-gray-300 mb-8 min-h-8"
+          className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 min-h-8"
         >
           <span>{displayText}</span>
           <span className="typewriter-cursor text-accent">|</span>
@@ -198,7 +211,7 @@ export default function Hero() {
           <a
             href={personalInfo.resumeUrl}
             download
-            className="px-8 py-3 bg-accent text-white rounded-full font-medium hover:bg-accent/80 transition-all duration-300 flex items-center gap-2 glow"
+            className="px-6 sm:px-8 py-2.5 sm:py-3 bg-accent text-white rounded-full font-medium hover:bg-accent/80 transition-all duration-300 flex items-center gap-2 glow text-sm sm:text-base"
           >
             <FaDownload /> Download CV
           </a>
@@ -207,7 +220,7 @@ export default function Hero() {
             smooth={true}
             duration={500}
             offset={-80}
-            className="px-8 py-3 border-2 border-accent text-accent rounded-full font-medium hover:bg-accent hover:text-white transition-all duration-300"
+            className="px-6 sm:px-8 py-2.5 sm:py-3 border-2 border-accent text-accent rounded-full font-medium hover:bg-accent hover:text-white transition-all duration-300 text-sm sm:text-base"
           >
             Contact Me
           </Link>
